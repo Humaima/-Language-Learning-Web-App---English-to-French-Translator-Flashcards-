@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translate - English to French</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Translate from <span class="highlight">English to French</span></h1>
+        <p>Enter an English sentence and get an instant translation!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('flashcards') }}">Flashcards</a></li>
+            <li><a href="{{ url_for('phrase_of_the_day') }}">Phrases of the Day</a></li>
+            <li><a href="{{ url_for('translate') }}">Translate</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Translate English to French</h2>
+        <form method="POST" action="{{ url_for('translate') }}">
+            <textarea name="english_sentence" rows="4" placeholder="Enter an English sentence..." required></textarea>
+            <button class="learn-btn" type="submit">Translate</button>
+        </form>
+
+        {% if french_translation %}
+        <div class="translation-result">
+            <h3>Translation</h3>
+            <p><strong>English:</strong> {{ english_sentence }}</p>
+            <p><strong>French:</strong> {{ french_translation }}</p>
+
+            <audio controls>
+                <source src="{{ url_for('static', filename='translation.mp3') }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>© 2024 English to French. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

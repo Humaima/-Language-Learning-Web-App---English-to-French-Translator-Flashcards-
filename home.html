@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue à - English to French</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Bienvenue à <span class="highlight">English to French</span>!</h1>
+        <p>Your fun way to learn a new language every day!</p>
+    </header>
+    
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('flashcards') }}">Flashcards</a></li>
+            <li><a href="{{ url_for('phrase_of_the_day') }}">Phrases of the Day</a></li>
+            <li><a href="{{ url_for('translate') }}">Translate</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <p>Ready to dive into language learning? Explore flashcards, phrases, and translations to boost your skills. Start today!</p>
+        <a href="{{ url_for('flashcards') }}"><button class="learn-btn">Let's Learn!</button></a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 English to French. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to External JavaScript File -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

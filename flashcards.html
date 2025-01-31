@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - English to French</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Learn with <span class="highlight">Flashcards</span></h1>
+        <p>Test your French vocabulary with interactive flashcards!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('flashcards') }}">Flashcards</a></li>
+            <li><a href="{{ url_for('phrase_of_the_day') }}">Phrases of the Day</a></li>
+            <li><a href="{{ url_for('translate') }}">Translate</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Select the number of flashcards:</h2>
+        <form method="POST" action="{{ url_for('flashcards') }}">
+            <input type="number" name="num_flashcards" min="1" max="10" value="5" required>
+            <button class="learn-btn" type="submit">Generate Flashcards</button>
+        </form>
+
+        {% if flashcards %}
+        <div class="flashcard-container">
+            {% for flashcard in flashcards %}
+            <div class="flashcard">
+                <div class="english-side">
+                    <p>{{ flashcard[0] }}</p>
+                </div>
+                <div class="french-side">
+                    <p>{{ flashcard[1] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>© 2024 English to French. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
